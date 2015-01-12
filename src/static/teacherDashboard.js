@@ -260,7 +260,7 @@ onMessage = function(message) {
 		}	
 	}
 	else if (data.type == "studentFocusStatus") {
-	    console.log(data.message.studentName + " is going " + data.message.focus + " focus");
+//	    console.log(data.message.studentName + " is going " + data.message.focus + " focus");
 	}
 	else if (data.type == "studentDisconnected") {
 		if (language == "EN"){
@@ -296,10 +296,10 @@ onMessage = function(message) {
 			$("#" + data.message.studentName).children(".logoutStudent").remove();
 		}
 	}
-	else if (data.type == "sessionExercise") {
+	else if (data.type == "exerciseExercise") {
 		buildExercise(data.message);
 	}
-	else if (data.type == "sessionStatus") {
+	else if (data.type == "exerciseStatus") {
 		buildDashboard(data);
 	}
 	else if (data.type == "lessonStats") {
@@ -636,7 +636,7 @@ function buildExercise(message){
 }
 
 buildDashboard = function (status){
-	console.log(JSON.stringify(status));
+//	console.log(JSON.stringify(status));
 	var language = getLanguage();
 	if (language == "EN"){
 		var t1 = "STUDENT ANSWERS";
@@ -812,7 +812,7 @@ askValidation = function () {
 					$(studentAnswers[i]).css("color", "Green");					
 				}
 			}
-			console.log(valid);
+//			console.log(valid);
 			$.post("/data/teacherValidation", {"valid": valid});
 			$("#answers").children().off("click");
 			newExercise();
@@ -960,7 +960,7 @@ function sendExercise(){
 	
 	answer.selections =selections;
 	answerJSON.answer  = answer;
-	console.log(JSON.stringify(answerJSON))
+//	console.log(JSON.stringify(answerJSON))
 	$.ajax({
 		url: "/data/teacherValidation",
 		type: "POST",
